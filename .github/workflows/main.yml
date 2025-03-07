@@ -41,5 +41,8 @@ jobs:
       - name: Terraform Validate
         run: terraform validate
 
-      - name: Terraform Destroy
-        run: terraform destroy -auto-approve -var="bucket_name=${{ secrets.BUCKET_NAME }}" -var="domain_name=${{ secrets.DOMAIN_NAME }}" -var="aws_region=${{ secrets.AWS_REGION }}" -var="email=${{ secrets.EMAIL }}" -var="table_name=${{ secrets.AWS_TABLE_NAME }}"
+      - name: Terraform Plan
+        run: terraform plan -var 'bucket_name=${{ secrets.BUCKET_NAME }}' -var 'domain_name=${{ secrets.DOMAIN_NAME }}' -var 'aws_region=${{ secrets.AWS_REGION }}' -var 'email=${{ secrets.EMAIL }}' -var 'table_name=${{ secrets.AWS_TABLE_NAME }}'
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve -var 'bucket_name=${{ secrets.BUCKET_NAME }}' -var 'domain_name=${{ secrets.DOMAIN_NAME }}' -var 'aws_region=${{ secrets.AWS_REGION }}' -var 'email=${{ secrets.EMAIL }}' -var 'table_name=${{ secrets.AWS_TABLE_NAME }}'
