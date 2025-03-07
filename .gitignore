@@ -1,0 +1,28 @@
+index.py
+.env
+counter.zip
+.DS_Store
+
+
+# Local .terraform directories
+**/.terraform/*
+
+# Terraform state files
+*.tfstate
+*.tfstate.*
+
+# Terraform variables (if they contain secrets)
+*.tfvars
+*.auto.tfvars
+
+# Crash log files
+crash.log
+crash.*.log
+
+# Exclude sensitive files
+*.pem
+*.key
+
+# Terraform lock file - consider keeping this in version control
+.terraform.lock.hcl
+
