@@ -1,4 +1,4 @@
-# Cloud Resume Challenge
+# Cloud Resume Challenge - Backend
 
 ## Overview
 This project implements the [Cloud Resume Challenge](https://cloudresumechallenge.dev/), a hands-on project that demonstrates cloud skills through building and deploying a personal resume website with a visitor counter using cloud services.
