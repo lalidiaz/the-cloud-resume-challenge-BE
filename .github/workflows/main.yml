@@ -32,8 +32,15 @@ jobs:
 
       - name: Create Lambda function file
         run: |
-          echo "${{ secrets.LAMBDA_CODE }}" > ../index.py
-          ls -la ../index.py
+          mkdir -p lambda_package
+
+          echo "${{ secrets.LAMBDA_CODE }}" > lambda_package/index.py
+
+          cd lambda_package
+          zip -r ../lambda_function.zip .
+          cd ..
+
+          ls -la lambda_function.zip
 
       - name: Terraform Init
         run: terraform init
