@@ -396,7 +396,7 @@ resource "aws_lambda_function" "counter" {
   role             = aws_iam_role.lambda_role.arn
   handler          = "index.lambda_handler"
   runtime          = "python3.9"
-  s3_bucket     = "ylambdafunctionlaura"
+  s3_bucket     = "lambdafunctionlaura"
   s3_key        = "lambda_function.zip"
 
   environment {
