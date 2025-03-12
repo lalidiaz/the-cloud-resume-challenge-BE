@@ -392,12 +392,12 @@ resource "aws_lambda_permission" "apigw_lambda" {
 
 
 resource "aws_lambda_function" "counter" {
-  filename         = "../lambda_function.zip"
   function_name    = "lambda_handler"
   role             = aws_iam_role.lambda_role.arn
   handler          = "index.lambda_handler"
   runtime          = "python3.9"
-  source_code_hash = filebase64sha256("../lambda_function.zip")
+  s3_bucket     = "ylambdafunctionlaura"
+  s3_key        = "lambda_function.zip"
 
   environment {
     variables = {
