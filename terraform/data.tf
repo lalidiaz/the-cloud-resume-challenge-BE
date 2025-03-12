@@ -24,12 +24,6 @@ data "aws_iam_policy_document" "cloudfront_s3_access" {
   }
 }
 
-data "archive_file" "lambda_zip" {
-  type        = "zip"
-  source_file = "../index.py"
-  output_path = "../counter.zip"
-}
-
 
 data "aws_route53_zone" "public_zone" {
   name = var.domain_name
