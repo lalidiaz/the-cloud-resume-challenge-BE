@@ -13,7 +13,7 @@ resource "aws_s3_bucket_cors_configuration" "cloud_resume_challenge_laura_diaz_c
 
   cors_rule {
     allowed_origins = [var.domain_name]
-    allowed_methods = ["GET", "PUT"]
+    allowed_methods = ["GET", "POST"]
     allowed_headers = ["Content-Type"]
     max_age_seconds = 3000
   }
@@ -210,7 +210,7 @@ resource "aws_cloudfront_response_headers_policy" "security_headers_policy" {
     }
 
     access_control_allow_methods {
-      items = ["GET", "OPTIONS", "PUT"]
+      items = ["GET", "OPTIONS", "POST"]
     }
 
     access_control_allow_origins {
@@ -289,7 +289,7 @@ resource "aws_apigatewayv2_api" "resume_api" {
 
   cors_configuration {
     allow_origins = ["https://${var.domain_name}"]
-    allow_methods = ["GET", "PUT", "OPTIONS"]
+    allow_methods = ["GET", "POST", "OPTIONS"]
     allow_headers = ["Content-Type"]
     max_age       = 300
   }
@@ -361,9 +361,9 @@ resource "aws_apigatewayv2_route" "get_counter" {
   target    = "integrations/${aws_apigatewayv2_integration.lambda_integration.id}"
 }
 
-resource "aws_apigatewayv2_route" "put_counter" {
+resource "aws_apigatewayv2_route" "post_counter" {
   api_id    = aws_apigatewayv2_api.resume_api.id
-  route_key = "PUT /counter"
+  route_key = "POST /counter"
   target    = "integrations/${aws_apigatewayv2_integration.lambda_integration.id}"
 }
 
@@ -514,7 +514,6 @@ resource "aws_cloudwatch_metric_alarm" "api_high_4xx_error_rate" {
   alarm_actions = [aws_sns_topic.api_alarms.arn]
   ok_actions    = [aws_sns_topic.api_alarms.arn]
 }
-
 
 
 # ----------------------------- SNS -----------------------------
