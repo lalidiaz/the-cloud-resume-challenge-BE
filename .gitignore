@@ -2,6 +2,7 @@ index.py
 .env
 counter.zip
 .DS_Store
+lambda_function.zip
 
 
 # Local .terraform directories
